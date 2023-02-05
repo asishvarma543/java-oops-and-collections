@@ -1,0 +1,48 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+
+    
+    class Dog{
+        public String name;
+        public String getName(){
+            return name;
+        }
+    }
+    
+    class Greyhound extends Dog{
+        private String color;
+    private int weight;
+    public Greyhound (String nam,String color,int weight){
+       this. name =nam;
+        this.color = color;
+        this.weight = weight;
+    }
+    public String toString(){
+        return this.name+" is "+this.color+" in color and his weight is "+this.weight+"Kg";
+    }
+
+    public String getColor(){
+        return this.color;
+    }
+    public int getWeight(){
+        return this.weight;
+    }
+}
+public class Solution{
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String name = in.nextLine();
+        String color = in.nextLine();
+        int weight = in.nextInt();
+        Greyhound pup = new Greyhound(name, color, weight);
+        System.out.println(pup.getName());
+        System.out.println(pup.getColor());
+        System.out.println(pup.getWeight());
+        System.out.println(pup);
+        System.out.println("Superclass:"+pup.getClass().getSuperclass().getName());
+    }
+}
