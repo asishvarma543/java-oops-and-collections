@@ -1,0 +1,92 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+class Person{
+       private String firstName;
+   private String lastName;
+    public Person(String fname,String lname){
+        firstName = fname;
+        lastName = lname;
+        
+    }
+public String getfName(){
+    return this.firstName;
+}
+public String getlName(){
+    return this.lastName;
+}
+}
+
+
+class Student extends Person{
+
+   private int id;
+   private List<Integer> scores=new ArrayList<Integer>();
+     public Student(String fname,String lname,int id){
+         super(fname,lname);
+        this.id=id;
+         
+     }
+     public void display_name(){
+         System.out.println("Name: "+getlName()+", "+getfName());
+             
+         }
+    
+     public void id(){
+         System.out.println("ID: "+this.id); 
+      }
+     public void setmarks(int mark){
+        scores.add(mark);
+    }
+    public String grade(){
+       int sum =0;
+       int count =0;
+    for(Integer a:scores ){
+        
+        sum +=a;
+        count++;
+        }
+        int avg =sum/count;
+        if(avg>=90 && avg<=100){
+            return  "O";  
+        }
+        if(avg>=80 && avg<90){
+            return "E";
+        }
+        if(avg>=70 && avg<80){
+            return "A";
+        }
+        if(avg>=55 && avg<70){
+            return "P";
+        }
+        if(avg>=40 && avg<55){
+            return "D";
+        }
+        else{
+            return "t";
+        }
+        
+    }
+}
+    
+    
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in=new Scanner(System.in); 
+        String ch[]=in.nextLine().split(" ");
+        Student s=new Student(ch[0],ch[1],Integer.parseInt(ch[2]));
+        int n=Integer.parseInt(in.nextLine());
+        String ch1[]=in.nextLine().split(" ");
+        for(int i=0;i<ch1.length;i++){
+            s.setmarks(Integer.parseInt(ch1[i]));
+        }
+        s.display_name();
+        s.id();
+        System.out.print("Grade: "+s.grade());
+    }
+  
+}
